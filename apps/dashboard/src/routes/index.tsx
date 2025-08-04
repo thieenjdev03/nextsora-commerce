@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import SidebarLayout from '../components/SidebarLayout'
+import AuthGuard from '../components/AuthGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@nextsora/ui'
 
 export const Route = createFileRoute('/')({
@@ -8,7 +9,8 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   return (
-    <SidebarLayout>
+    <AuthGuard>
+      <SidebarLayout>
       <div className="space-y-8">
         {/* Welcome Section */}
         <div>
@@ -181,5 +183,6 @@ function Index() {
         </Card>
       </div>
     </SidebarLayout>
+    </AuthGuard>
   )
 }

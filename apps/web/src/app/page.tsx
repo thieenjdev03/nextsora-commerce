@@ -21,13 +21,19 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/auth/login">
               <Button size="lg" className="w-full sm:w-auto">
-                Get Started
+                Đăng nhập
               </Button>
             </Link>
             
             <Link href="/auth/register">
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                Create Account
+                Tạo tài khoản
+              </Button>
+            </Link>
+            
+            <Link href="http://localhost:3003/login" target="_blank">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto">
+                Admin Dashboard
               </Button>
             </Link>
           </div>

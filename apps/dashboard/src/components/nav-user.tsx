@@ -28,16 +28,19 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
+import { getStoredUser, logout } from "@/lib/auth"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+export function NavUser() {
+  const storedUser = getStoredUser();
+  const user = storedUser ? {
+    name: storedUser.fullName || `${storedUser.firstName} ${storedUser.lastName}`,
+    email: storedUser.email,
+    avatar: storedUser.avatar || "/avatars/admin.jpg",
+  } : {
+    name: "NextSora Admin",
+    email: "admin@nextsora.com", 
+    avatar: "/avatars/admin.jpg",
+  };
   const { isMobile } = useSidebar()
 
   return (
@@ -51,7 +54,9 @@ export function NavUser({
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
@@ -81,13 +86,6 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
                 <BadgeCheck />
                 Account
               </DropdownMenuItem>
@@ -101,7 +99,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={logout} className="text-red-600 focus:text-red-600">
               <LogOut />
               Log out
             </DropdownMenuItem>

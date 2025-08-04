@@ -1,5 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import SidebarLayout from '../components/SidebarLayout'
+import AuthGuard from '../components/AuthGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@nextsora/ui'
 
 export const Route = createLazyFileRoute('/about')({
@@ -13,7 +14,8 @@ function About() {
   ];
 
   return (
-    <SidebarLayout breadcrumbItems={breadcrumbItems}>
+    <AuthGuard>
+      <SidebarLayout breadcrumbItems={breadcrumbItems}>
       <div className="space-y-8">
         <div>
           <h2 className="text-3xl font-bold text-gray-900">About NextSora</h2>
@@ -75,5 +77,6 @@ function About() {
         </Card>
       </div>
     </SidebarLayout>
+    </AuthGuard>
   )
 }
