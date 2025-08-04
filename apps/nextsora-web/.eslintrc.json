@@ -1,0 +1,3 @@
+{
+  "extends": ["@nextsora/config/eslint/nextjs", "next/core-web-vitals"]
+}

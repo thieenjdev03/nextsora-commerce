@@ -1,0 +1,23 @@
+{
+    "name": "nextsora-project",
+    "private": true,
+    "version": "1.0.0",
+    "packageManager": "pnpm@8.15.4",
+    "workspaces": [
+      "apps/*",
+      "packages/*"
+    ],
+    "scripts": {
+      "dev": "turbo run dev --parallel",
+      "dev:api": "turbo run dev --filter=nextsora-api",
+      "dev:web": "turbo run dev --filter=nextsora-web",
+      "dev:dashboard": "turbo run dev --filter=nextsora-dashboard",
+      "build": "turbo run build",
+      "lint": "turbo run lint",
+      "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf packages/*/node_modules"
+    },
+    "devDependencies": {
+      "turbo": "^2.5.5",
+      "typescript": "^5.4.0"
+    }
+  }
