@@ -1,5 +1,5 @@
 {
-  "name": "nextsora-dashboard",
+  "name": "@nextsora/dashboard",
   "private": true,
   "version": "1.0.0",
   "type": "module",

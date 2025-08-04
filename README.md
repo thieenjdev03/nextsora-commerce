@@ -7,9 +7,9 @@ NextSora là một ứng dụng web hiện đại được xây dựng trên ki�
 ```
 nextsora-project/
 │── apps/
-│   ├── nextsora-api/          # Backend service (NestJS)
-│   ├── nextsora-web/          # Frontend website (Next.js)
-│   └── nextsora-dashboard/    # Internal dashboard (Vite + ShadCN)
+│   ├── api/          # Backend service (NestJS)
+│   ├── web/          # Frontend website (Next.js)
+│   └── dashboard/    # Internal dashboard (Vite + ShadCN)
 │
 │── packages/
 │   ├── ui/                    # Shared UI components (React)
@@ -24,7 +24,7 @@ nextsora-project/
 
 ## 🚀 Công nghệ sử dụng
 
-### Backend (nextsora-api)
+### Backend (api)
 - **NestJS** - Progressive Node.js framework
 - **Mongoose** - MongoDB object modeling cho Node.js
 - **MongoDB Atlas** - Cloud database service
@@ -32,14 +32,14 @@ nextsora-project/
 - **Swagger** - API documentation
 - **bcryptjs** - Password hashing
 
-### Frontend Web (nextsora-web)
+### Frontend Web (web)
 - **Next.js 14** - React framework với App Router
 - **TypeScript** - Type-safe JavaScript
 - **TailwindCSS** - Utility-first CSS framework
 - **React Hook Form** - Form handling
 - **React Hot Toast** - Toast notifications
 
-### Dashboard (nextsora-dashboard)
+### Dashboard (dashboard)
 - **Vite** - Build tool
 - **React 18** - UI library
 - **TypeScript** - Type-safe JavaScript
@@ -81,7 +81,7 @@ pnpm install
 
 ### 3. Setup cơ sở dữ liệu
 
-MongoDB Atlas đã được cấu hình sẵn. Tạo file `.env` trong `apps/nextsora-api/`:
+MongoDB Atlas đã được cấu hình sẵn. Tạo file `.env` trong `apps/api/`:
 
 ```env
 # MongoDB Configuration - Đã được cấu hình sẵn MongoDB Atlas
@@ -192,7 +192,7 @@ pnpm clean             # Xóa node_modules
 
 ```bash
 # Run tests cho API
-cd apps/nextsora-api
+cd apps/api
 pnpm test
 
 # Run tests với coverage
@@ -206,9 +206,9 @@ pnpm test:e2e
 
 ### Build API Docker image:
 ```bash
-cd apps/nextsora-api
-docker build -t nextsora-api .
-docker run -p 3001:3001 nextsora-api
+cd apps/api
+docker build -t api .
+docker run -p 3001:3001 api
 ```
 
 ## 🤝 Đóng góp

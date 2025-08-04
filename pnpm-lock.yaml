@@ -15,7 +15,7 @@ importers:
         specifier: ^5.4.0
         version: 5.9.2
 
-  apps/nextsora-api:
+  apps/api:
     dependencies:
       '@nestjs/common':
         specifier: ^10.3.3
@@ -136,7 +136,7 @@ importers:
         specifier: ^5.4.0
         version: 5.9.2
 
-  apps/nextsora-dashboard:
+  apps/dashboard:
     dependencies:
       '@nextsora/ui':
         specifier: workspace:*
@@ -245,7 +245,7 @@ importers:
         specifier: ^5.1.5
         version: 5.4.19
 
-  apps/nextsora-web:
+  apps/web:
     dependencies:
       '@nextsora/ui':
         specifier: workspace:*

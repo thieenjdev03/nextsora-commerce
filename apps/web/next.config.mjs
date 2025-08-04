@@ -5,7 +5,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   env: {
-    CUSTOM_KEY: 'nextsora-web',
+    CUSTOM_KEY: 'web',
   },
 }
 
