@@ -5,6 +5,10 @@ import * as bcrypt from 'bcryptjs';
 import { User, UserDocument } from './schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { BulkCreateUserDto } from './dto/bulk-create-user.dto';
+import { BulkUpdateUserDto } from './dto/bulk-update-user.dto';
+import { BulkDeleteUserDto } from './dto/bulk-delete-user.dto';
+import { BulkOperationResult } from './dto/bulk-response.dto';
 
 @Injectable()
 export class UsersService {
@@ -94,5 +98,117 @@ export class UsersService {
       return user;
     }
     return null;
+  }
+
+  // BULK Operations
+  async bulkCreate(bulkCreateUserDto: BulkCreateUserDto): Promise<BulkOperationResult> {
+    const result: BulkOperationResult = {
+      success: 0,
+      failed: 0,
+      total: bulkCreateUserDto.users.length,
+      errors: [],
+      successfulIds: []
+    };
+
+    for (const userDto of bulkCreateUserDto.users) {
+      try {
+        // Check if user already exists
+        const existingUser = await this.userModel.findOne({ email: userDto.email });
+        if (existingUser) {
+          result.failed++;
+          result.errors.push(`User with email ${userDto.email} already exists`);
+          continue;
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(userDto.password, 10);
+        
+        // Create user
+        const user = new this.userModel({
+          ...userDto,
+          password: hashedPassword,
+        });
+        
+        const savedUser = await user.save();
+        result.success++;
+        result.successfulIds.push(savedUser._id.toString());
+      } catch (error) {
+        result.failed++;
+        result.errors.push(`Failed to create user ${userDto.email}: ${error.message}`);
+      }
+    }
+
+    return result;
+  }
+
+  async bulkUpdate(bulkUpdateUserDto: BulkUpdateUserDto): Promise<BulkOperationResult> {
+    const result: BulkOperationResult = {
+      success: 0,
+      failed: 0,
+      total: bulkUpdateUserDto.users.length,
+      errors: [],
+      successfulIds: []
+    };
+
+    for (const updateItem of bulkUpdateUserDto.users) {
+      try {
+        const updateData = { ...updateItem.data };
+        
+        // Hash password if provided
+        if (updateData.password) {
+          updateData.password = await bcrypt.hash(updateData.password, 10);
+        }
+
+        const updatedUser = await this.userModel.findByIdAndUpdate(
+          updateItem.id,
+          updateData,
+          { new: true }
+        );
+
+        if (!updatedUser) {
+          result.failed++;
+          result.errors.push(`User with ID ${updateItem.id} not found`);
+          continue;
+        }
+
+        result.success++;
+        result.successfulIds.push(updatedUser._id.toString());
+      } catch (error) {
+        result.failed++;
+        result.errors.push(`Failed to update user ${updateItem.id}: ${error.message}`);
+      }
+    }
+
+    return result;
+  }
+
+  async bulkDelete(bulkDeleteUserDto: BulkDeleteUserDto): Promise<BulkOperationResult> {
+    const result: BulkOperationResult = {
+      success: 0,
+      failed: 0,
+      total: bulkDeleteUserDto.ids.length,
+      errors: [],
+      successfulIds: []
+    };
+
+    for (const id of bulkDeleteUserDto.ids) {
+      try {
+        const deletedUser = await this.userModel.findByIdAndDelete(id);
+        
+        if (!deletedUser) {
+          result.failed++;
+          result.errors.push(`User with ID ${id} not found`);
+          continue;
+        }
+
+        result.success++;
+        result.successfulIds.push(id);
+      } catch (error) {
+        result.failed++;
+        result.errors.push(`Failed to delete user ${id}: ${error.message}`);
+      }
+    }
+
+    return result;
   }
 }

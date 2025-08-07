@@ -27,11 +27,13 @@ export const isAuthenticated = (): boolean => {
 export const logout = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
+  // Redirect to login page
   window.location.href = '/login'
 }
 
 export const requireAuth = () => {
   if (!isAuthenticated()) {
+    // Redirect to login if not authenticated
     window.location.href = '/login'
     return false
   }

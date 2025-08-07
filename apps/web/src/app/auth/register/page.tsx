@@ -35,8 +35,8 @@ export default function RegisterPage() {
       
       toast.success('Đăng ký thành công!');
       
-      // Redirect to dashboard or home
-      window.location.href = '/';
+      // Redirect to user dashboard
+      window.location.href = '/dashboard';
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Đăng ký thất bại');
     } finally {

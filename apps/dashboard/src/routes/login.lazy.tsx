@@ -147,6 +147,15 @@ function LoginPage() {
           <p className="text-sm text-gray-500">
             Dành cho quản trị viên NextSora
           </p>
+          <p className="text-sm text-gray-500 mt-2">
+            Chưa có tài khoản?{' '}
+            <button
+              onClick={() => navigate({ to: '/register' })}
+              className="font-medium text-blue-600 hover:text-blue-500"
+            >
+              Đăng ký ngay
+            </button>
+          </p>
         </div>
       </div>
     </div>

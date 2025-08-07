@@ -1,11 +1,11 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 // Default axios instance configuration
 const defaultConfig: AxiosRequestConfig = {
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
+  baseURL: "http://localhost:3001/api",
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
@@ -16,7 +16,8 @@ export const apiClient: AxiosInstance = axios.create(defaultConfig);
 apiClient.interceptors.request.use(
   (config) => {
     // Add auth token if available
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const token =
+      typeof window !== "undefined" ? localStorage.getItem("token") : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -36,9 +37,9 @@ apiClient.interceptors.response.use(
     // Handle common errors
     if (error.response?.status === 401) {
       // Unauthorized - clear token and redirect to login
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('token');
-        window.location.href = '/auth/login';
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("token");
+        window.location.href = "/auth/login";
       }
     }
     return Promise.reject(error);
@@ -46,7 +47,10 @@ apiClient.interceptors.response.use(
 );
 
 // Helper function to create API client with custom config
-export const createApiClient = (baseURL: string, config?: AxiosRequestConfig): AxiosInstance => {
+export const createApiClient = (
+  baseURL: string,
+  config?: AxiosRequestConfig
+): AxiosInstance => {
   return axios.create({
     ...defaultConfig,
     baseURL,

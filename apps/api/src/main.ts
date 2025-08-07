@@ -9,10 +9,12 @@ async function bootstrap() {
   // Enable CORS for multiple frontend URLs
   app.enableCors({
     origin: [
+      process.env.FRONTEND_URL,
+      process.env.WEB_URL,
+      process.env.DASHBOARD_URL,
       'http://localhost:3000',
       'http://localhost:3002', 
-      'http://localhost:3003',
-      process.env.FRONTEND_URL
+      'http://localhost:3003'
     ].filter(Boolean),
     credentials: true,
   });
@@ -26,6 +28,9 @@ async function bootstrap() {
     }),
   );
 
+  // Global prefix (must be set BEFORE Swagger setup)
+  app.setGlobalPrefix('api');
+
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('NextSora API')
@@ -35,16 +40,13 @@ async function bootstrap() {
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
-
-  // Global prefix
-  app.setGlobalPrefix('api');
+  SwaggerModule.setup('docs', app, document);
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
   
   console.log(`🚀 NextSora API is running on: http://localhost:${port}`);
-  console.log(`📚 Swagger docs available at: http://localhost:${port}/api/docs`);
+  console.log(`📚 Swagger docs available at: http://localhost:${port}/docs`);
 }
 
 bootstrap();

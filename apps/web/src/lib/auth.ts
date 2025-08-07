@@ -32,6 +32,7 @@ export const logout = () => {
 
 export const requireAuth = () => {
   if (!isAuthenticated()) {
+    // Redirect to login if not authenticated
     window.location.href = '/auth/login'
     return false
   }

@@ -1,0 +1,34 @@
+version: 1
+rules:
+  - name: "Project Overview"
+    description: |
+      This is a reusable e-commerce monorepo project:
+      - apps/api (NestJS)
+      - apps/dashboard (ReactJS + Tailwind + ShadCN)
+      - apps/landing (Vite + Tailwind)
+      - packages/ui and packages/utils are shared components and helpers.
+    appliesTo: ["*"]
+
+  - name: "Coding Guidelines"
+    description: |
+      - Use TypeScript for all code files.
+      - Follow ESLint and Prettier standards.
+      - Prefer functional components and hooks over class components.
+      - Use TailwindCSS utility classes instead of inline styles.
+      - In NestJS, each module must have: controller, service, dto, entity.
+    appliesTo: ["*.ts", "*.tsx"]
+
+  - name: "File Naming"
+    description: |
+      - Use PascalCase for React components.
+      - Use camelCase for hooks, utils, and variables.
+      - Avoid files longer than 500 lines. Split into smaller files if necessary.
+    appliesTo: ["*.ts", "*.tsx"]
+
+  - name: "Commenting Rules"
+    description: |
+      - All comments in the source code must be written in clear, concise English.
+      - Avoid adding unnecessary or irrelevant comments.
+      - Only add comments when explaining complex logic, non-obvious behavior, or TODOs.
+      - Do not add automatic or generic comments (e.g., 'this is a function').
+    appliesTo: ["*.ts", "*.tsx", "*.js", "*.jsx"]

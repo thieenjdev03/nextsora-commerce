@@ -1,0 +1,99 @@
+.
+├── apps
+│   ├── api
+│   │   ├── dist
+│   │   ├── Dockerfile
+│   │   ├── nest-cli.json
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── src
+│   │   └── tsconfig.json
+│   ├── dashboard
+│   │   ├── components.json
+│   │   ├── dist
+│   │   ├── index.html
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── src
+│   │   ├── tailwind.config.js
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   ├── tsconfig.tsbuildinfo
+│   │   └── vite.config.ts
+│   └── web
+│       ├── next-env.d.ts
+│       ├── next.config.mjs
+│       ├── node_modules
+│       ├── package.json
+│       ├── postcss.config.js
+│       ├── postcss.config.mjs
+│       ├── src
+│       ├── tailwind.config.js
+│       └── tsconfig.json
+├── node_modules
+│   ├── @eslint
+│   │   ├── eslintrc -> ../.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc
+│   │   └── js -> ../.pnpm/@eslint+js@8.57.1/node_modules/@eslint/js
+│   ├── @eslint-community
+│   │   ├── eslint-utils -> ../.pnpm/@eslint-community+eslint-utils@4.7.0_eslint@8.57.1/node_modules/@eslint-community/eslint-utils
+│   │   └── regexpp -> ../.pnpm/@eslint-community+regexpp@4.12.1/node_modules/@eslint-community/regexpp
+│   ├── @next
+│   │   └── eslint-plugin-next -> ../.pnpm/@next+eslint-plugin-next@14.1.0/node_modules/@next/eslint-plugin-next
+│   ├── @rushstack
+│   │   └── eslint-patch -> ../.pnpm/@rushstack+eslint-patch@1.12.0/node_modules/@rushstack/eslint-patch
+│   ├── @types
+│   │   ├── eslint -> ../.pnpm/@types+eslint@9.6.1/node_modules/@types/eslint
+│   │   └── eslint-scope -> ../.pnpm/@types+eslint-scope@3.7.7/node_modules/@types/eslint-scope
+│   ├── @typescript-eslint
+│   │   ├── eslint-plugin -> ../.pnpm/@typescript-eslint+eslint-plugin@7.18.0_@typescript-eslint+parser@7.18.0_eslint@8.57.1_typescript@5.9.2/node_modules/@typescript-eslint/eslint-plugin
+│   │   ├── parser -> ../.pnpm/@typescript-eslint+parser@7.18.0_eslint@8.57.1_typescript@5.9.2/node_modules/@typescript-eslint/parser
+│   │   ├── scope-manager -> ../.pnpm/@typescript-eslint+scope-manager@7.18.0/node_modules/@typescript-eslint/scope-manager
+│   │   ├── type-utils -> ../.pnpm/@typescript-eslint+type-utils@7.18.0_eslint@8.57.1_typescript@5.9.2/node_modules/@typescript-eslint/type-utils
+│   │   ├── types -> ../.pnpm/@typescript-eslint+types@7.18.0/node_modules/@typescript-eslint/types
+│   │   ├── typescript-estree -> ../.pnpm/@typescript-eslint+typescript-estree@7.18.0_typescript@5.9.2/node_modules/@typescript-eslint/typescript-estree
+│   │   ├── utils -> ../.pnpm/@typescript-eslint+utils@7.18.0_eslint@8.57.1_typescript@5.9.2/node_modules/@typescript-eslint/utils
+│   │   └── visitor-keys -> ../.pnpm/@typescript-eslint+visitor-keys@7.18.0/node_modules/@typescript-eslint/visitor-keys
+│   ├── eslint -> .pnpm/eslint@8.57.1/node_modules/eslint
+│   ├── eslint-config-next -> .pnpm/eslint-config-next@14.1.0_eslint@8.57.1_typescript@5.9.2/node_modules/eslint-config-next
+│   ├── eslint-import-resolver-node -> .pnpm/eslint-import-resolver-node@0.3.9/node_modules/eslint-import-resolver-node
+│   ├── eslint-import-resolver-typescript -> .pnpm/eslint-import-resolver-typescript@3.10.1_eslint-plugin-import@2.32.0_eslint@8.57.1/node_modules/eslint-import-resolver-typescript
+│   ├── eslint-module-utils -> .pnpm/eslint-module-utils@2.12.1_@typescript-eslint+parser@6.21.0_eslint-import-resolver-node@0.3.9_5re4sdu5dxklrkqjhl4kblqr4y/node_modules/eslint-module-utils
+│   ├── eslint-plugin-import -> .pnpm/eslint-plugin-import@2.32.0_@typescript-eslint+parser@6.21.0_eslint-import-resolver-typescript@3.10.1_eslint@8.57.1/node_modules/eslint-plugin-import
+│   ├── eslint-plugin-jsx-a11y -> .pnpm/eslint-plugin-jsx-a11y@6.10.2_eslint@8.57.1/node_modules/eslint-plugin-jsx-a11y
+│   ├── eslint-plugin-react -> .pnpm/eslint-plugin-react@7.37.5_eslint@8.57.1/node_modules/eslint-plugin-react
+│   ├── eslint-plugin-react-hooks -> .pnpm/eslint-plugin-react-hooks@4.6.2_eslint@8.57.1/node_modules/eslint-plugin-react-hooks
+│   ├── eslint-plugin-react-refresh -> .pnpm/eslint-plugin-react-refresh@0.4.20_eslint@8.57.1/node_modules/eslint-plugin-react-refresh
+│   ├── eslint-scope -> .pnpm/eslint-scope@7.2.2/node_modules/eslint-scope
+│   ├── eslint-visitor-keys -> .pnpm/eslint-visitor-keys@3.4.3/node_modules/eslint-visitor-keys
+│   ├── prettier -> .pnpm/prettier@3.6.2/node_modules/prettier
+│   ├── turbo -> .pnpm/turbo@2.5.5/node_modules/turbo
+│   └── typescript -> .pnpm/typescript@5.9.2/node_modules/typescript
+├── package.json
+├── packages
+│   ├── config
+│   │   ├── eslint
+│   │   ├── index.js
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── tailwind
+│   │   └── typescript
+│   ├── ui
+│   │   ├── dist
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── src
+│   │   └── tsconfig.json
+│   └── utils
+│       ├── dist
+│       ├── node_modules
+│       ├── package.json
+│       ├── src
+│       └── tsconfig.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── README.md
+├── tree.txt
+└── turbo.json
+
+65 directories, 32 files

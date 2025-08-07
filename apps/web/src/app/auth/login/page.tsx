@@ -29,8 +29,8 @@ export default function LoginPage() {
       
       toast.success('Đăng nhập thành công!');
       
-      // Redirect to dashboard or home
-      window.location.href = '/';
+      // Redirect to user dashboard
+      window.location.href = '/dashboard';
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Đăng nhập thất bại');
     } finally {
