@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -10,27 +10,27 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-    // NextSora Dashboard data
-    const data = {
-      user: {
-        name: "NextSora Admin",
-        email: "admin@nextsora.com",
-        avatar: "/avatars/admin.jpg",
-      },
+// NextSora Dashboard data
+const data = {
+  user: {
+    name: "NextSora Admin",
+    email: "admin@nextsora.com",
+    avatar: "/avatars/admin.jpg",
+  },
   teams: [
     {
       name: "NextSora",
@@ -50,40 +50,48 @@ import {
   ],
   navMain: [
     {
-      title: "Dashboard",
+      title: "Danh Mục Sản Phẩm",
       url: "/",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "Overview",
+          title: "Phân Loại",
           url: "/",
         },
         {
-          title: "Analytics",
+          title: "Nhóm Sản Phẩm",
           url: "/analytics",
         },
         {
-          title: "Reports",
+          title: "Sản Phẩm",
           url: "/reports",
+        },
+        {
+          title: "Bài Viết",
+          url: "/posts",
         },
       ],
     },
     {
-      title: "Users",
+      title: "Người Dùng",
       url: "/users",
       icon: Bot,
       items: [
         {
-          title: "All Users",
+          title: "Tất Cả Người Dùng",
           url: "/users",
         },
         {
-          title: "User Roles",
+          title: "Tài Khoản",
+          url: "/accounts",
+        },
+        {
+          title: "Vai Trò Người Dùng",
           url: "/users/roles",
         },
         {
-          title: "Permissions",
+          title: "Quyền Hạn",
           url: "/users/permissions",
         },
       ],
@@ -152,7 +160,7 @@ import {
       icon: Map,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -169,5 +177,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
