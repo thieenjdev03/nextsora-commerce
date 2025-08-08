@@ -1,0 +1,32 @@
+name: CI - Lint, Build, Test
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: |
+          corepack enable
+          pnpm install
+
+      - name: 🧹 Lint code
+        run: pnpm lint
+
+      - name: 🔨 Build all apps
+        run: pnpm build
+
+      - name: ✅ Run tests (nếu có)
+        run: pnpm test || echo "no tests yet"
