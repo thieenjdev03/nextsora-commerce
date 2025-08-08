@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 // Default axios instance configuration
 const defaultConfig: AxiosRequestConfig = {
-  baseURL: "http://localhost:3001/api",
+  baseURL: "http://localhost:3080/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

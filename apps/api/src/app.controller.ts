@@ -20,6 +20,14 @@ export class AppController {
       status: 'ok',
       timestamp: new Date().toISOString(),
       service: 'NextSora API',
+      version: '1.0.0',
+      environment: process.env.NODE_ENV || 'development',
     };
+  }
+
+  @Get('test-error')
+  @ApiOperation({ summary: 'Test error logging' })
+  testError() {
+    throw new Error('This is a test error for logging');
   }
 }

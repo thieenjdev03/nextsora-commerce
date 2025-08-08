@@ -1,6 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { Transform } from 'class-transformer';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document } from "mongoose";
+import { Transform } from "class-transformer";
 
 export type UserDocument = User & Document;
 
@@ -30,8 +30,14 @@ export class User {
   @Prop({ default: true })
   isActive: boolean;
 
-  @Prop({ default: 'user', enum: ['user', 'admin', 'moderator'] })
+  @Prop({ default: "user", enum: ["user", "admin", "moderator"] })
   role: string;
+
+  @Prop({ select: false, default: null })
+  refreshTokenHash?: string | null;
+
+  @Prop({ default: 0 })
+  tokenVersion: number;
 
   // Virtual properties
   get id(): string {
@@ -46,19 +52,19 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 // Add virtual for id
-UserSchema.virtual('id').get(function() {
+UserSchema.virtual("id").get(function () {
   return this._id.toString();
 });
 
 // Add virtual for fullName
-UserSchema.virtual('fullName').get(function() {
+UserSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
 // Ensure virtual fields are serialized
-UserSchema.set('toJSON', {
+UserSchema.set("toJSON", {
   virtuals: true,
-  transform: function(doc, ret) {
+  transform: function (doc, ret) {
     delete ret._id;
     delete ret.__v;
     return ret;
