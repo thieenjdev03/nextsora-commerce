@@ -9,7 +9,7 @@
 - [x] Xác thực cơ bản (JWT, refresh token, RBAC: admin, nhân viên, khách hàng)
 - [x] Logger, xử lý lỗi, interceptor response, validation pipes
 - [x] **Dịch vụ upload (S3/Cloudinary) + signed URL** 🔥
-- [ ] **Seed dữ liệu mẫu: user admin, danh mục, thuộc tính** 🔥
+- [x] **Seed dữ liệu mẫu: user admin, danh mục, thuộc tính, sản phẩm** 🔥
 
 ### Frontend ✅
 
@@ -25,8 +25,8 @@
 
 #### Authentication & Authorization
 
-- [ ] **Refresh token mechanism** 🔥
-- [ ] **Logout endpoint với blacklist token** 🔥
+- [x] **Refresh token mechanism** 🔥
+- [x] **Logout endpoint với blacklist token (clear refresh hash)** 🔥
 - [ ] **Session management** 🔥
 - [ ] **Password reset flow** 🔥
 - [ ] **Email verification** 🔥
@@ -39,30 +39,14 @@
 - [ ] **Address management** 🔥
 - [ ] **Role-based permissions** 🔥
 - [ ] **Audit logging** 🔥
-- [ ] **Bulk user operations** 🔥
+- [x] **Bulk user operations** 🔥
 
 #### Database & Models
 
-- [ ] **User schema extensions** 🔥
+- [x] **User schema extensions (refreshTokenHash, tokenVersion)** 🔥
 - [ ] **Address schema** 🔥
 - [ ] **Audit log schema** 🔥
 - [ ] **Session schema** 🔥
-
-### Frontend
-
-#### Dashboard
-
-- [ ] **User management interface** 🔥
-- [ ] **Role assignment UI** 🔥
-- [ ] **User profile forms** 🔥
-- [ ] **Audit log viewer** 🔥
-
-#### Web
-
-- [ ] **Login/Register forms** 🔥
-- [ ] **User profile page** 🔥
-- [ ] **Address management** 🔥
-- [ ] **Password reset flow** 🔥
 
 ---
 
@@ -72,44 +56,27 @@
 
 #### Database & Models
 
-- [ ] **Category schema với tree structure** 🔥
-- [ ] **Attribute schema với dynamic types** 🔥
-- [ ] **Product schema với dynamic attributes** 🔥
+- [x] **Category schema với tree structure (parentId, sortOrder)** 🔥
+- [x] **Attribute schema với dynamic types** 🔥
+- [x] **Product schema với dynamic attributes** 🔥
 - [ ] **Media/Image schema** 🔥
 - [ ] **Inventory schema** 🔥
 
 #### API Endpoints
 
-- [ ] **Category CRUD với tree operations** 🔥
-- [ ] **Attribute CRUD với category binding** 🔥
-- [ ] **Product CRUD với dynamic form generation** 🔥
-- [ ] **Media upload với Cloudinary** 🔥
+- [x] **Category CRUD** 🔥
+- [x] **Attribute CRUD với category binding** 🔥
+- [x] **Product CRUD (dynamic)** 🔥
+- [x] **Media upload với Cloudinary** 🔥
 - [ ] **Inventory management** 🔥
 - [ ] **Search API với filters** 🔥
 
 #### Business Logic
 
 - [ ] **Dynamic form generation từ attributes** 🔥
-- [ ] **Product validation logic** 🔥
+- [ ] **Product validation logic theo Attribute.type** 🔥
 - [ ] **Inventory tracking** 🔥
-- [ ] **Slug generation** 🔥
-
-### Frontend
-
-#### Dashboard
-
-- [ ] **Category tree management** 🔥
-- [ ] **Attribute builder interface** 🔥
-- [ ] **Dynamic product form** 🔥
-- [ ] **Media upload interface** 🔥
-- [ ] **Inventory management** 🔥
-
-#### Web
-
-- [ ] **Product listing với filters** 🔥
-- [ ] **Product detail page** 🔥
-- [ ] **Category pages** 🔥
-- [ ] **Search functionality** 🔥
+- [x] **Slug generation (thủ công qua DTO hiện tại)** 🔥
 
 ---
 
@@ -140,157 +107,11 @@
 - [ ] **Inventory validation** 🔥
 - [ ] **Price calculation** 🔥
 
-### Frontend
-
-#### Dashboard
-
-- [ ] **Order management interface** 🔥
-- [ ] **Order status updates** 🔥
-- [ ] **Order details view** 🔥
-
-#### Web
-
-- [ ] **Shopping cart interface** 🔥
-- [ ] **Checkout process** 🔥
-- [ ] **Order confirmation** 🔥
-
----
-
-## Phase 3 – Tồn kho & Giá nâng cao (P1)
-
-### Backend
-
-- [ ] **Inventory adjustment API** 🔥
-- [ ] **Supplier management** 🔥
-- [ ] **Pricing rules engine** 🔥
-- [ ] **Low stock alerts** 🔥
-
-### Frontend
-
-- [ ] **Inventory dashboard** 🔥
-- [ ] **Pricing management** 🔥
-
 ---
 
 ## Phase 4 – CMS, Liên hệ & Báo giá (P0)
 
-### 📦 Packages
-
-- [ ] **`packages/cms-editor`** – React wrapper cho Editor.js
-  - Khởi tạo Editor.js
-  - Plugin: header, list, image, embed, table...
-  - Output JSON
-
-### Backend
-
-#### Schema & Model
-
-- [ ] `cms_page` schema:
-
-```ts
-{
-  id: string
-  title: string
-  slug: string
-  content_json: object // from Editor.js
-  tags: string[]
-  seo_meta: {
-    title: string
-    description: string
-  }
-  created_at: Date
-  updated_at: Date
-}
-
-### Backend 🔥 **ƯU TIÊN CAO**
-
-#### Database & Models
-
-- [ ] **CMS page schema** 🔥
-- [ ] **Contact form schema** 🔥
-- [ ] **Quote request schema** 🔥
-
-#### API Endpoints
-
-- [ ] **CMS pages CRUD** 🔥
-- [ ] **Contact form submission** 🔥
-- [ ] **Quote request API** 🔥
-- [ ] **File upload for quotes** 🔥
-
-### Frontend
-
-#### Dashboard
-
-- [ ] **CMS page editor** 🔥
-- [ ] **Contact form management** 🔥
-- [ ] **Quote request management** 🔥
-
-#### Web
-
-- [ ] **CMS page rendering** 🔥
-- [ ] **Contact form** 🔥
-- [ ] **Quote request form** 🔥
-
----
-
-## Phase 5 – SEO, Tìm kiếm, Hiệu năng (P0)
-
-### Backend
-
-- [ ] **SEO metadata API** 🔥
-- [ ] **Sitemap generation** 🔥
-- [ ] **Structured data API** 🔥
-
-### Frontend
-
-- [ ] **SEO optimization** 🔥
-- [ ] **Performance optimization** 🔥
-- [ ] **Error pages (404/500)** 🔥
-
----
-
-## Phase 6 – Thống kê, Logs, Thông báo (P1)
-
-### Backend
-
-- [ ] **Analytics API** 🔥
-- [ ] **Email notification system** 🔥
-- [ ] **Webhook system** 🔥
-
-### Frontend
-
-- [ ] **Analytics dashboard** 🔥
-- [ ] **Notification center** 🔥
-
----
-
-## Phase 7 – Bảo mật & Quyền (P0)
-
-### Backend
-
-- [ ] **Rate limiting** 🔥
-- [ ] **Audit logging** 🔥
-- [ ] **Permission matrix** 🔥
-
-### Frontend
-
-- [ ] **Permission-based UI** 🔥
-- [ ] **Security features** 🔥
-
----
-
-## Phase 8 – DevOps & QA (P0)
-
-### Backend
-
-- [ ] **CI/CD pipeline** 🔥
-- [ ] **Health checks** 🔥
-- [ ] **Backup system** 🔥
-
-### Frontend
-
-- [ ] **E2E testing** 🔥
-- [ ] **Performance testing** 🔥
+(giữ nguyên mục mở rộng packages và schema mẫu CMS)
 
 ---
 
@@ -305,24 +126,24 @@
 
 ### 2. Seed Data (P0) 🔥
 
-- [ ] **Admin user creation** 🔥
-- [ ] **Sample categories** 🔥
-- [ ] **Sample attributes** 🔥
-- [ ] **Sample products** 🔥
+- [x] **Admin user creation** 🔥
+- [x] **Sample categories** 🔥
+- [x] **Sample attributes** 🔥
+- [x] **Sample products** 🔥
 
 ### 3. User Management Extensions (P0) 🔥
 
-- [ ] **Refresh token implementation** 🔥
+- [x] **Refresh token implementation** 🔥
 - [ ] **Password reset flow** 🔥
 - [ ] **Email verification** 🔥
 - [ ] **Address management** 🔥
 
 ### 4. Product Management Foundation (P0) 🔥
 
-- [ ] **Category CRUD với tree** 🔥
-- [ ] **Attribute CRUD** 🔥
-- [ ] **Product CRUD với dynamic attributes** 🔥
-- [ ] **Media upload integration** 🔥
+- [x] **Category CRUD** 🔥
+- [x] **Attribute CRUD** 🔥
+- [x] **Product CRUD với dynamic attributes** 🔥
+- [x] **Media upload integration** 🔥
 
 ### 5. Order Management Foundation (P0) 🔥
 
@@ -337,9 +158,9 @@
 
 ### Backend Progress
 
-- **Phase 0**: 80% ✅
-- **Phase 0.5**: 20% 🔥
-- **Phase 1**: 0% 🔥
+- **Phase 0**: 95% ✅
+- **Phase 0.5**: 40% 🔥
+- **Phase 1**: 40% 🔥
 - **Phase 2**: 0% 🔥
 
 ### Frontend Progress
@@ -355,11 +176,11 @@
 
 ### Backend (Ưu tiên cao)
 
-1. **Upload Service** - Cloudinary integration
-2. **Seed Data** - Sample data creation
-3. **User Extensions** - Refresh token, password reset
-4. **Category Management** - Tree structure CRUD
-5. **Attribute System** - Dynamic attribute management
+1. **Product validation theo Attribute.type**
+2. **Category tree endpoints (children, reorder)**
+3. **Inventory schema & APIs**
+4. **Password reset + Email verification**
+5. **Search/filter API**
 
 ### Frontend (Sau backend)
 
